@@ -17,7 +17,7 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-
+import Listas.ListasEmpleados;
 import Mensajefinal.Mensaje_1;
 import Opciones_de_salida.Salir_3;
 
@@ -33,6 +33,7 @@ public class Empleados extends JFrame {
     private JTextField textField3;
     private JTextField textField4;
     private JTextField textField5;
+    private ListasEmpleados listaEmpleados = new ListasEmpleados();
 
     /**
      * Launch the application.
@@ -209,17 +210,21 @@ public class Empleados extends JFrame {
             public void actionPerformed(ActionEvent arg0) {
 
                 try {
-                    java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/computadores", "root", "");
+                    String codigo = textField0.getText();
+                    String nombres = textField1.getText();
+                    String apellidos = textField2.getText();
+                    String genero = textField3.getText();
+                    int edad = Integer.parseInt(textField4.getText());
+                    double sueldo = Double.parseDouble(textField5.getText());
 
-                    java.sql.Statement comando = conexion.createStatement();
+                    listaEmpleados.agregarEmpleado(codigo, nombres, apellidos, genero, edad, sueldo);
 
-                    comando.executeUpdate("insert into empleados(codigo,nombres,apellidos,genero,edad,sueldo) values (" + textField0.getText() + ",'" + textField1.getText() + "','" + textField2.getText() + "','" + textField3.getText() + "'," + textField4.getText() + "," + textField5.getText() + ")");
-                    conexion.close();
-
+                    // Mensaje de éxito
                     Mensaje_1 mensaje = new Mensaje_1();
                     dispose();
                     mensaje.setVisible(true);
 
+                    // Limpiar campos
                     textField0.setText("");
                     textField1.setText("");
                     textField2.setText("");
@@ -227,8 +232,8 @@ public class Empleados extends JFrame {
                     textField4.setText("");
                     textField5.setText("");
 
-                } catch (SQLException ex) {
-                    setTitle(ex.toString());
+                } catch (NumberFormatException ex) {
+                    setTitle("Error de formato: " + ex.getMessage());
                 }
             }
         });
