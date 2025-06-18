@@ -1,7 +1,5 @@
 package Final;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
@@ -22,9 +20,11 @@ import Mensajefinal.Mensaje_1;
 import Opciones_de_salida.Salir_3;
 
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Toolkit;
+import javax.swing.JDialog;
 
-public class Empleados extends JFrame {
+public class Empleados extends JDialog {
 
     private JPanel contentPane;
     private JTextField textField0;
@@ -35,30 +35,11 @@ public class Empleados extends JFrame {
     private JTextField textField5;
     private ListasEmpleados listaEmpleados = new ListasEmpleados();
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Empleados frame = new Empleados();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    /**
-     * Create the frame.
-     */
-    public Empleados() {
+    public Empleados(Frame parent) {
+        super(parent, "Empleados", true);
         setResizable(false);
-        setTitle("Empleados.");
         setIconImage(Toolkit.getDefaultToolkit().getImage(Empleados.class.getResource("/Iconos/computer.png")));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 640, 480);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -90,7 +71,6 @@ public class Empleados extends JFrame {
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 Menu menu = new Menu();
-                dispose();
                 menu.setVisible(true);
 
             }

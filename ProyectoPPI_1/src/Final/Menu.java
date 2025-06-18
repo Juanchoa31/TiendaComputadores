@@ -25,6 +25,7 @@ import java.awt.Toolkit;
 public class Menu extends JFrame {
 
     private JPanel contentPane;
+     Empleados empleadosDialog = new Empleados(this);
 
     /**
      * Launch the application.
@@ -70,12 +71,8 @@ public class Menu extends JFrame {
         btnNewButton.setBackground(new Color(0, 0, 0));
         btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
         btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-
-                Empleados empleados = new Empleados();
-                dispose();
-                empleados.setVisible(true);
-
+            public void actionPerformed(ActionEvent arg0) {                          
+                empleadosDialog.setVisible(true);
             }
         });
         panel_1.setLayout(null);
