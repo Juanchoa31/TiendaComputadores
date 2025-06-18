@@ -1,6 +1,5 @@
 package Consultas;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,15 +9,13 @@ import javax.swing.border.EmptyBorder;
 import Final.Menu;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
+
 import java.awt.Toolkit;
 import java.awt.Font;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
+
 import javax.swing.JTable;
 import java.awt.Color;
-import javax.swing.JTextField;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;

@@ -1,6 +1,5 @@
 package Final;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -24,7 +23,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
+
 import java.awt.Toolkit;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;

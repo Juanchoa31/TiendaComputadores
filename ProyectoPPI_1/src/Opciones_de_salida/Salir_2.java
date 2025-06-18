@@ -1,12 +1,11 @@
 package Opciones_de_salida;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextPane;
+
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
+
 import javax.swing.border.LineBorder;
 
 import Final.Clientes;

@@ -1,6 +1,5 @@
 package Final;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -26,7 +25,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
-import java.awt.Dialog.ModalExclusionType;
 
 public class Clientes extends JFrame {
 
