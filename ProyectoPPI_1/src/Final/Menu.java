@@ -25,7 +25,7 @@ import java.awt.Toolkit;
 public class Menu extends JFrame {
 
     private JPanel contentPane;
-     Empleados empleadosDialog = new Empleados(this);
+    Empleados empleadosDialog = new Empleados(this);
 
     /**
      * Launch the application.

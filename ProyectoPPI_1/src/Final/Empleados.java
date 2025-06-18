@@ -35,8 +35,8 @@ public class Empleados extends JDialog {
     private JTextField textField5;
     private ListasEmpleados listaEmpleados = new ListasEmpleados();
 
-    public Empleados(Frame parent) {
-        super(parent, "Empleados", true);
+    public Empleados(Frame parent, boolean modal) {
+        super(parent, "Empleados", modal);
         setResizable(false);
         setIconImage(Toolkit.getDefaultToolkit().getImage(Empleados.class.getResource("/Iconos/computer.png")));
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -72,7 +72,6 @@ public class Empleados extends JDialog {
             public void actionPerformed(ActionEvent arg0) {
                 Menu menu = new Menu();
                 menu.setVisible(true);
-
             }
         });
         btnNewButton.setBounds(10, 11, 108, 23);
