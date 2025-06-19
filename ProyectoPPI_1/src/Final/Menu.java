@@ -71,7 +71,8 @@ public class Menu extends JFrame {
         btnNewButton.setBackground(new Color(0, 0, 0));
         btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
         btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {                          
+            public void actionPerformed(ActionEvent arg0) {
+                dispose();
                 empleadosDialog.setVisible(true);
             }
         });

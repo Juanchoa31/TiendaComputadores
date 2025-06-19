@@ -71,6 +71,7 @@ public class Empleados extends JDialog {
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 Menu menu = new Menu();
+                dispose();
                 menu.setVisible(true);
             }
         });
