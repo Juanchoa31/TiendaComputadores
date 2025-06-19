@@ -35,8 +35,8 @@ public class Empleados extends JDialog {
     private JTextField textField5;
     private ListasEmpleados listaEmpleados = new ListasEmpleados();
 
-    public Empleados(Frame parent, boolean modal) {
-        super(parent, "Empleados", modal);
+    public Empleados(Frame parent) {
+        super(parent, "Empleados");
         setResizable(false);
         setIconImage(Toolkit.getDefaultToolkit().getImage(Empleados.class.getResource("/Iconos/computer.png")));
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

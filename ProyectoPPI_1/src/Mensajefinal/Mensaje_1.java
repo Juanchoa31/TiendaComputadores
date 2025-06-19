@@ -71,7 +71,7 @@ public class Mensaje_1 extends JFrame {
         JButton btnNewButton = new JButton("Volver.");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                Empleados empleados = new Empleados(null, true);
+                Empleados empleados = new Empleados(null);
                 dispose();
                 empleados.setVisible(true);
             }

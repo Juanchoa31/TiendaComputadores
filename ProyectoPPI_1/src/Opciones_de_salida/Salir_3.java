@@ -79,7 +79,7 @@ public class Salir_3 extends JFrame {
         JButton btnNewButton_1 = new JButton("No.");
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-              Empleados salir = new Empleados(null, true);
+              Empleados salir = new Empleados(null);
               salir.setLocationRelativeTo(null);
               salir.setVisible(true);
               dispose();             
