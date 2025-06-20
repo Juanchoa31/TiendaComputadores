@@ -1,12 +1,10 @@
 package Final;
 
+import Listas.Empleado;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -203,6 +201,7 @@ public class Empleados extends JDialog {
                     Mensaje_1 mensaje = new Mensaje_1();
                     dispose();
                     mensaje.setVisible(true);
+                    System.out.println(true);
 
                     // Limpiar campos
                     textField0.setText("");
@@ -228,21 +227,31 @@ public class Empleados extends JDialog {
         btnNewButton_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/computadores", "root", "");
-                    java.sql.Statement comando = conexion.createStatement();
-                    int cantidad = comando.executeUpdate("update empleados set nombres='" + textField1.getText() + "',"
-                            + "apellidos='" + textField2.getText() + "',"
-                            + "genero='" + textField3.getText() + "',"
-                            + "edad=" + textField4.getText() + ","
-                            + "sueldo=" + textField5.getText());
-                    if (cantidad == 1) {
-                        JOptionPane.showMessageDialog(null, "Se actualizo correctamente.");
+                    String codigo = textField0.getText();
+                    String nombres = textField1.getText();
+                    String apellidos = textField2.getText();
+                    String genero = textField3.getText();
+                    int edad = Integer.parseInt(textField4.getText());
+                    double sueldo = Double.parseDouble(textField5.getText());
+
+                    boolean editado = listaEmpleados.editarEmpleado(codigo, nombres, apellidos, genero, edad, sueldo);
+
+                    if (editado) {
+                        JOptionPane.showMessageDialog(null, "Empleado editado correctamente.");
                     } else {
-                        JOptionPane.showMessageDialog(null, "No existe dicho codigo, lo siento.");
+                        JOptionPane.showMessageDialog(null, "Empleado no encontrado.");
                     }
-                    conexion.close();
-                } catch (SQLException ex) {
-                    setTitle(ex.toString());
+
+                    // Limpiar campos
+                    textField0.setText("");
+                    textField1.setText("");
+                    textField2.setText("");
+                    textField3.setText("");
+                    textField4.setText("");
+                    textField5.setText("");
+
+                } catch (NumberFormatException ex) {
+                    setTitle("Error de formato: " + ex.getMessage());
                 }
             }
         });
@@ -257,26 +266,22 @@ public class Empleados extends JDialog {
         btnNewButton_4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                try {
-                    java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/computadores", "root", "");
-                    java.sql.Statement comando = conexion.createStatement();
-                    int cantidad = comando.executeUpdate("delete from empleados where codigo=" + textField0.getText());
-                    if (cantidad == 1) {
+                String codigo = textField0.getText();
+                boolean eliminado = listaEmpleados.eliminarEmpleado(codigo);
 
-                        textField0.setText("");
-                        textField1.setText("");
-                        textField2.setText("");
-                        textField3.setText("");
-                        textField4.setText("");
-                        textField5.setText("");
+                if (eliminado) {
+                    textField0.setText("");
+                    textField1.setText("");
+                    textField2.setText("");
+                    textField3.setText("");
+                    textField4.setText("");
+                    textField5.setText("");
 
-                        JOptionPane.showMessageDialog(null, "Se borro");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No existe");
-                    }
-                    conexion.close();
-                } catch (SQLException ex) {
-                    setTitle(ex.toString());
+                    Mensaje_1 mensaje = new Mensaje_1();
+                    dispose();
+                    mensaje.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Empleado no encontrado.");
                 }
             }
         });
@@ -291,24 +296,18 @@ public class Empleados extends JDialog {
         btnNewButton_5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
-                try {
-                    java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/computadores", "root", "");
-                    java.sql.Statement comando = conexion.createStatement();
+                String codigo = textField0.getText();
+                Empleado encontrado = listaEmpleados.buscarEmpleado(codigo);
 
-                    ResultSet registro = comando.executeQuery("select nombres,apellidos,genero,edad,sueldo from empleados where codigo=" + textField0.getText());
-                    if (registro.next() == true) {
-
-                        textField1.setText(registro.getString("nombres"));
-                        textField2.setText(registro.getString("apellidos"));
-                        textField3.setText(registro.getString("genero"));
-                        textField4.setText(registro.getString("edad"));
-                        textField5.setText(registro.getString("sueldo"));
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No existe ningun elemento con dicho codigo");
-                    }
-                    conexion.close();
-                } catch (SQLException ex) {
-                    setTitle(ex.toString());
+                if (encontrado != null) {
+                    textField1.setText(encontrado.nombres);
+                    textField2.setText(encontrado.apellidos);
+                    textField3.setText(encontrado.genero);
+                    textField4.setText(String.valueOf(encontrado.edad));
+                    textField5.setText(String.valueOf(encontrado.sueldo));
+                    JOptionPane.showMessageDialog(null, "Empleado encontrado.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Empleado no encontrado.");
                 }
 
             }

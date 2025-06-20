@@ -1,13 +1,13 @@
 package Listas;
 
 public class Empleado {
-    String codigo;
-    String nombres;
-    String apellidos;
-    String genero;
-    int edad;
-    double sueldo;
-    Empleado siguiente;
+    public String codigo;
+    public String nombres;
+    public String apellidos;
+    public String genero;
+    public int edad;
+    public double sueldo;
+    public Empleado siguiente;
 
     public Empleado(String codigo, String nombres, String apellidos, String genero, int edad, double sueldo) {
         this.codigo = codigo;
@@ -18,6 +18,5 @@ public class Empleado {
         this.sueldo = sueldo;
         this.siguiente = null;
     }
-    
-    
+
 }
