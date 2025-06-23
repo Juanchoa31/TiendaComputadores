@@ -22,7 +22,7 @@ import java.awt.Frame;
 import java.awt.Toolkit;
 import javax.swing.JDialog;
 
-public class Empleados extends JDialog {
+public class Empleados extends javax.swing.JDialog {
 
     private JPanel contentPane;
     private JTextField textField0;
@@ -32,7 +32,7 @@ public class Empleados extends JDialog {
     private JTextField textField4;
     private JTextField textField5;
     private ListasEmpleados listaEmpleados = new ListasEmpleados();
-
+    
     public Empleados(Frame parent) {
         super(parent, "Empleados");
         setResizable(false);
